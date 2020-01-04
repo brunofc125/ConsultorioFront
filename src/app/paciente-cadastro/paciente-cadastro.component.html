@@ -1,0 +1,28 @@
+<div class="example-container">
+    <form [formGroup]="checkoutForm" class = "example-form" (ngSubmit)="onSubmit(checkoutForm.value)">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder= "Gerenciamento de Pacientes" disabled value="Paciente">
+          </mat-form-field>
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input id="inputNome" formControlName="inputNome" matInput placeholder="Nome">
+                    </mat-form-field>
+                </td>
+
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input id="inputDataNasc" formControlName="inputDataNasc" matInput placeholder="Data de Nascimento" type="date" min="1900-01-01" class="example-right-align">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+        <div class = "button">
+            <button style="width:100px" type="submit" mat-raised-button color="primary"> {{(isCadastro?"Cadastro": "Editar")}} </button>
+        </div>
+    </form>
+        
+</div>
+  

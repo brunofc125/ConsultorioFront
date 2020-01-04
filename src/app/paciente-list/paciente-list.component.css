@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+}
+    
+.example-form {
+    width: 100%;
+}
+
+.example-full-width {
+    width: 90%;
+}
+
+div.button {
+    padding: 20px;
+    float: right;
+}
+
+div.text {
+    width: 98%;
+    padding: 0px 10px;
+}
+
+div.table {
+    width: 98%;
+    padding: 0px 10px;
+}
+

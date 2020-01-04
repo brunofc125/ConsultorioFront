@@ -1,0 +1,35 @@
+<div class="example-container">
+    <form [formGroup]="checkoutForm" class = "example-form" (ngSubmit)="onSubmit(checkoutForm.value)">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder= "Agendamento de Horários" disabled value="Agendamento">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input id="inputNome"  matInput placeholder= "Nome do Paciente" readonly value={{name}} >
+        </mat-form-field>
+        
+        <table class="example-full-width" cellspacing="0">
+            <tr>    
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input id="inputHorarioInicial" formControlName="inputHorarioInicial" matInput placeholder="Horário Inicial" type="datetime-local" min="1900-01-01">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input id="inputHorarioFinal" formControlName="inputHorarioFinal" matInput placeholder="Horário Final" type="datetime-local" min="inputHorarioInicial" class="example-right-align">
+                    </mat-form-field>
+                </td>
+            </tr>     
+        </table>
+
+        <mat-form-field class="example-full-width">
+            <textarea id="inputObservacao" formControlName="inputObservacao" matInput placeholder="Observações"></textarea>
+        </mat-form-field>
+
+        <div class = "button">
+            <button style="width:100px" type="submit" mat-raised-button color="primary"> {{(isAgendamento?"Agendar": "Editar")}} </button>
+        </div>
+    </form>
+        
+</div>
+  

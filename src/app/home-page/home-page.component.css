@@ -1,0 +1,32 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.example-container > * {
+    width: 100%;
+}
+
+
+.example-form {
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+td {
+    padding-right: 8px;
+}
+
+div.button {
+    padding: 20px;
+    float: right;
+}
+
+
+
+
+  
