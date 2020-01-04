@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
 
   fazerLogin(customerData): void{
     this.service.fazerLogin(customerData);
+    sessionStorage.setItem("menu", "Consultório - Agenda");
   }
 
 }

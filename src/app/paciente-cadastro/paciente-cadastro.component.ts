@@ -42,17 +42,30 @@ export class PacienteCadastroComponent implements OnInit {
     if(this.isCadastro){
       var p = new Paciente(customerData.inputNome, customerData.inputDataNasc);
       this.service.cadastrar(p).subscribe(
-        success => { console.log(success); alert("Cadastro realizado!") },
+        success => { 
+            if(success){
+              alert("Cadastro realizado!");
+              this.checkoutForm.reset();
+            } else{
+              alert("Erro no Cadastro!");
+            }
+          },
         error => { console.log(error); alert("Erro no Cadastro!") }
       );
     } else {
       var p = new Paciente(customerData.inputNome, customerData.inputDataNasc, this.idAtualizar);
       this.service.atualizar(p).subscribe(
-        success => { console.log(success); alert("Atualização realizada!"); sessionStorage.removeItem("PacienteAtualizar"); },
+        success => { 
+            if(success){
+              alert("Atualização realizada!");
+            } else{
+              alert("Erro na atualização!");
+            }
+          },
         error => { console.log(error); alert("Erro na atualização!") }
       );
     }
-    this.checkoutForm.reset();
+    
   }
 
 }

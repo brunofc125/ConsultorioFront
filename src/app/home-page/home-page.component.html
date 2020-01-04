@@ -1,7 +1,9 @@
 <div class="example-container">
-    <mat-form-field class="example-full-width">
-        <input matInput placeholder= "Home" disabled value="Bem-vindo">
-    </mat-form-field>
+
+    <mat-toolbar>
+        <span>Bem-Vindo</span>
+    </mat-toolbar>
+
     <table class="example-full-width" cellspacing="0">
         <tr>
             <td width="10px">
@@ -12,8 +14,64 @@
             </td>
         </tr>
     </table>
-    <a (click)="editarLogin()">Editar Login</a>
 
+    <form [formGroup]="form"  class = "example-form" (ngSubmit)="editarLogin(form.value)">
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Perfil
+            </mat-panel-title>
+            <mat-panel-description>
+              Editar Informações
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field class="example-full-width">
+            <input type="text" matInput placeholder="Nome" formControlName="inputNome">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width">
+            <input type="text" matInput placeholder="Login" formControlName="inputLogin">
+          </mat-form-field>
+      
+          
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Senha
+            </mat-panel-title>
+            <mat-panel-description>
+              Alterar Senha
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-form-field class="example-full-width">
+            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="senha1" [disabled]="naoAlterarSenha" type="password" matInput placeholder="Senha">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width">
+            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="senha2" [disabled]="naoAlterarSenha" type="password" matInput placeholder="Confirmar Senha">
+          </mat-form-field>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+
+      
+
+      <div class = "button">
+        <button style="width:100px" type="submit" mat-raised-button color="primary"> Salvar </button>
+      </div>
+
+      <div class = "checkbox" >
+        <mat-checkbox (click)="checkedSenha()">Alterar Senha</mat-checkbox>
+      </div>
+      
+
+    </form>
+    
     
         
 </div>

@@ -8,13 +8,12 @@
     width: 100%;
 }
 
-
 .example-form {
     width: 100%;
 }
 
 .example-full-width {
-    width: 100%;
+    width: 30%;
 }
 
 td {
@@ -22,6 +21,20 @@ td {
 }
 
 div.button {
+    padding: 20px;
+    float: right;
+}
+
+.example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+    float: right;
+}
+
+div.checkbox {
+    display: flex;
     padding: 20px;
     float: right;
 }

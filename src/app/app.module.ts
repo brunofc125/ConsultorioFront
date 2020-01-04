@@ -8,7 +8,10 @@ import {
   MatButtonModule,
   MatTableModule,
   MatSelectModule,
-  MatGridListModule
+  MatGridListModule,
+  MatProgressBarModule,
+  MatExpansionModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 
@@ -22,7 +25,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { LoginService } from './login/login.service';
 import { PacienteListComponent } from './paciente-list/paciente-list.component';
 import { PacienteCadastroComponent } from './paciente-cadastro/paciente-cadastro.component';
 import { AgendamentoListComponent } from './agendamento-list/agendamento-list.component';
@@ -57,7 +59,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     MatIconModule,
     MatListModule,
     MatSelectModule,
-    MatGridListModule
+    MatGridListModule,
+    MatExpansionModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

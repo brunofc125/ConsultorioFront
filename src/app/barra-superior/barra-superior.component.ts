@@ -26,6 +26,7 @@ export class BarraSuperiorComponent implements OnInit {
 
   sair(): void{
     localStorage.removeItem("UsuarioLogado");
+    sessionStorage.setItem("menu", "Consultório - Agenda");
   }
 
   pacientePage(): void{

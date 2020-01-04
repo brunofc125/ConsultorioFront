@@ -49,4 +49,8 @@ export class LoginService {
   getUsuario(usuario: Usuario) : Observable<UsuarioCompleto>{
     return this.httpClient.get<UsuarioCompleto>(`${this.applicationUrl}/api/usuario/validar?login=${usuario.login}&senha=${usuario.senha}`);
   }
+
+  atualizarUsuario(usuario: UsuarioCompleto): Observable<UsuarioCompleto>{
+    return this.httpClient.put<UsuarioCompleto>(`${this.applicationUrl}/api/usuario`, usuario);
+  }
 }

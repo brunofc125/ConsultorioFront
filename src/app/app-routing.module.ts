@@ -10,14 +10,15 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', component: BarraSuperiorComponent, 
+  { path: '', redirectTo: 'home_page', pathMatch: 'full' },
+  { path: '', component: BarraSuperiorComponent,
     children:[
       { path: 'home_page', component: HomePageComponent},
       { path: 'paciente_list', component: PacienteListComponent },
       { path: 'paciente_cadastro', component: PacienteCadastroComponent },
       { path: 'agendamento_cadastro', component: AgendamentoCadastroComponent },
       { path: 'agendamento_list', component: AgendamentoListComponent }
-    ] }
+    ] },
 ];
 
 @NgModule({
