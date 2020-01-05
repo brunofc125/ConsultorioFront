@@ -11,7 +11,8 @@ table {
 }
 
 div.button {
-    padding: 20px;
+    padding: 5px;
+    padding-top: 0px;
     float: right;
 }
 
@@ -26,8 +27,14 @@ div.table {
 }
 
 td {
-    padding-right: 8px;
+    padding: 0px 8px 0px 0px;
 }
+
+.icon {
+    width: 100px;
+    text-align:center;
+}
+
 
 
 

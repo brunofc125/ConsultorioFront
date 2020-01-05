@@ -9,7 +9,7 @@ import { PacienteService } from '../paciente.service';
 })
 export class PacienteListComponent implements OnInit {
   dataSource: Paciente[];
-  displayedColumns: string[] = ['nome', 'dataNasc', 'agendar','editar', 'excluir'];
+  displayedColumns: string[] = ['nome', 'dataNasc', 'agendar', 'editar', 'excluir'];
   inputNome: string;
 
   constructor(

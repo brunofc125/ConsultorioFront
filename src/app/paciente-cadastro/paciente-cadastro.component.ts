@@ -9,6 +9,7 @@ import { PacienteService } from '../paciente.service';
   styleUrls: ['./paciente-cadastro.component.css']
 })
 export class PacienteCadastroComponent implements OnInit {
+  
   checkoutForm;
   isCadastro: boolean;
   idAtualizar: string;
@@ -18,8 +19,9 @@ export class PacienteCadastroComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     var pString = sessionStorage.getItem("PacienteAtualizar");
+    sessionStorage.removeItem("PacienteAtualizar");
     if(pString != null){
-      var p = JSON.parse(sessionStorage.getItem("PacienteAtualizar"));
+      var p = JSON.parse(pString);
       this.idAtualizar = p.id;
       this.checkoutForm = this.formBuilder.group({
         inputNome: p.nome,
@@ -36,7 +38,9 @@ export class PacienteCadastroComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
+
 
   onSubmit(customerData){
     if(this.isCadastro){

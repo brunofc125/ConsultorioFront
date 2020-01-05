@@ -25,6 +25,7 @@ export class AgendamentoCadastroComponent implements OnInit, OnDestroy {
     var aString = sessionStorage.getItem("AgendamentoAtualizar");
     this.usuario = JSON.parse(localStorage.getItem("UsuarioLogado"));
     this.paciente = JSON.parse(sessionStorage.getItem("PacienteAgendar"));
+    sessionStorage.removeItem("PacienteAgendar");
     if(this.paciente == null)
       this.name = "";
     else
@@ -49,44 +50,50 @@ export class AgendamentoCadastroComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    sessionStorage.setItem("menu", "Agendamento");
   }
 
   ngOnDestroy(): void {
     sessionStorage.removeItem("AgendamentoAtualizar");
+    
   }
 
   onSubmit(customerData){
     console.log(customerData);
-    if(this.isAgendamento){
-      var a = new Agendamento(this.usuario.id, this.paciente.id, customerData.inputHorarioInicial, customerData.inputHorarioFinal, customerData.inputObservacao);
-      this.service.cadastrar(a).subscribe(
-        success => {  if(success){
-                        alert("Cadastro realizado!");
-                        sessionStorage.removeItem("AgendamentoAtualizar");
-                        sessionStorage.removeItem("PacienteAgendar");
-                        this.name = "";
-                        this.checkoutForm.reset();
-                      } else{
-                        alert("Erro no Cadastro!")
-                      }
-                  },
-        error => { console.log(error); alert("Erro no Cadastro!") }
-      );
-    } else{
-      var a = new Agendamento(this.usuario.id, this.paciente.id, customerData.inputHorarioInicial, customerData.inputHorarioFinal, customerData.inputObservacao, this.idAtualizar);
-      this.service.atualizar(a).subscribe(
-        success => { if(success){
-                        alert("Atualização realizada!");
-                        sessionStorage.removeItem("AgendamentoAtualizar");
-                        sessionStorage.removeItem("PacienteAgendar");
-                        this.name = "";
-                        this.checkoutForm.reset();
-                      } else{
-                        alert("Erro na Atualização!")
-                      }
+    if(this.paciente!= null && this.usuario != null){
+      if(this.isAgendamento){
+        var a = new Agendamento(this.usuario.id, this.paciente.id, customerData.inputHorarioInicial, customerData.inputHorarioFinal, customerData.inputObservacao);
+        this.service.cadastrar(a).subscribe(
+          success => {  if(success){
+                          alert("Cadastro realizado!");
+                          sessionStorage.removeItem("AgendamentoAtualizar");
+                          sessionStorage.removeItem("PacienteAgendar");
+                          this.name = "";
+                          this.checkoutForm.reset();
+                        } else{
+                          alert("Erro no Cadastro!")
+                        }
                     },
-        error => { console.log(error); alert("Erro na Atualização!") }
-      )
+          error => { console.log(error); alert("Erro no Cadastro!") }
+        );
+      } else{
+        var a = new Agendamento(this.usuario.id, this.paciente.id, customerData.inputHorarioInicial, customerData.inputHorarioFinal, customerData.inputObservacao, this.idAtualizar);
+        this.service.atualizar(a).subscribe(
+          success => { if(success){
+                          alert("Atualização realizada!");
+                          sessionStorage.removeItem("AgendamentoAtualizar");
+                          sessionStorage.removeItem("PacienteAgendar");
+                          this.name = "";
+                          this.checkoutForm.reset();
+                        } else{
+                          alert("Erro na Atualização!")
+                        }
+                      },
+          error => { console.log(error); alert("Erro na Atualização!") }
+        )
+      }
+    } else{
+      alert("Erro no Cadastro")
     }
     
   }

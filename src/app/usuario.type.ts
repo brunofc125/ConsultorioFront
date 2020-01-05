@@ -15,7 +15,9 @@ export class UsuarioCompleto{
     login: string;
     senha: string;
     
-    constructor(id: string, nome: string, login: string, senha: string){
+    constructor(nome: string, login: string, senha: string)
+    constructor(nome: string, login: string, senha: string, id: string)
+    constructor(nome: string, login: string, senha: string, id?: string){
         this.id = id;
         this.nome = nome;
         this.login = login;

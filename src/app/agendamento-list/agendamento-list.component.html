@@ -2,37 +2,40 @@
     <div class = "table">
         <div>
             <div class="example-form">
-                <p></p>
-                <table class="example-full-width" cellspacing="0">
-                    <tr>
-                        <td width="10px">
-                            <mat-form-field class = "example-full-width">
-                                <mat-label>Buscar por</mat-label>
-                                <mat-select [(value)]="buscarSelect">
-                                    <mat-option value="nome">Nome</mat-option>
-                                    <mat-option value="data">Data</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </td>
-                        <td width="100%">
-                            <mat-form-field *ngIf="buscarSelect=='nome'" class="example-full-width">
-                                <input [(ngModel)]="inputNome" id="inputNome" matInput placeholder="Digite o nome do paciente para buscar">
-                            </mat-form-field>
-                            <mat-form-field *ngIf="buscarSelect=='data'" class="example-full-width">
-                                  <input [(ngModel)]="inputData" id="inputData" matInput placeholder="Data" type="date">
-                            </mat-form-field>
-                        </td>
-                        <td>
-                            <div class = "button">
-                                <button style="width:90px" mat-raised-button color="primary" (click)="obterAgendamentos(inputNome, inputData)"> Buscar </button>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+                <br>
+                <mat-card style="padding: 10px 0px 0px 10px;background-color:rgba(255, 255, 255, 0.800)">
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td width="10px">
+                                <mat-form-field class = "example-full-width">
+                                    <mat-label>Buscar por</mat-label>
+                                    <mat-select [(value)]="buscarSelect">
+                                        <mat-option value="nome">Nome</mat-option>
+                                        <mat-option value="data">Data</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </td>
+                            <td width="100%">
+                                <mat-form-field *ngIf="buscarSelect=='nome'" class="example-full-width">
+                                    <input [(ngModel)]="inputNome" id="inputNome" matInput placeholder="Digite o nome do paciente para buscar">
+                                </mat-form-field>
+                                <mat-form-field *ngIf="buscarSelect=='data'" class="example-full-width">
+                                    <input [(ngModel)]="inputData" id="inputData" matInput placeholder="Data" type="date">
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <div class = "button">
+                                    <button style="background-color: #3273cdd5;width:90px" mat-raised-button color="primary" (click)="obterAgendamentos(inputNome, inputData)"> Buscar </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </mat-card>
+                <br>
                 
             </div>
         
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">  
+            <table style="table-layout: fixed" mat-table [dataSource]="dataSource" class="mat-elevation-z8">  
                 <ng-container matColumnDef="nomePaciente">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Nome Paciente</b> </th>
                 <td mat-cell *matCellDef="let agendamento"> {{ agendamento.paciente.nome }} </td>
@@ -49,8 +52,8 @@
                 </ng-container>
 
                 <ng-container matColumnDef="editar">
-                    <th mat-header-cell *matHeaderCellDef><b>Editar</b></th>
-                    <td mat-cell *matCellDef="let agendamento; index as i">
+                    <th class="icon" mat-header-cell *matHeaderCellDef><b>Editar</b></th>
+                    <td class="icon" mat-cell *matCellDef="let agendamento; index as i">
                         <button mat-icon-button (click)="atualizar(i)" routerLink="/agendamento_cadastro">
                             <mat-icon>edit</mat-icon>
                         </button>
@@ -58,8 +61,8 @@
                 </ng-container>
 
                 <ng-container matColumnDef="excluir">
-                    <th mat-header-cell *matHeaderCellDef><b>Excluir</b></th>
-                    <td mat-cell *matCellDef="let agendamento; index as i">
+                    <th class="icon" mat-header-cell *matHeaderCellDef><b>Excluir</b></th>
+                    <td class="icon" mat-cell *matCellDef="let agendamento; index as i">
                         <button mat-icon-button (click)="deletar(i)">
                             <mat-icon>delete</mat-icon>
                         </button>
@@ -70,8 +73,5 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table> 
         </div>
-    </div>
-    <div class = "button">
-        <button style="width:90px" mat-raised-button color="primary" (click)="cadastrar()" routerLink="/paciente_list"> Novo </button>
     </div>
 </div>

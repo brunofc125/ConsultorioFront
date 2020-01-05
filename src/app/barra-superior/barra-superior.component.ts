@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-barra-superior',
@@ -17,11 +18,26 @@ export class BarraSuperiorComponent implements OnInit {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {
+  constructor(
+      private breakpointObserver: BreakpointObserver,
+      private router: Router
+    ) {
+      console.log("cons: " + this.router.url)
   }
 
   ngOnInit() {
-    this.menu = sessionStorage.getItem("menu");
+    var url = this.router.url;
+    switch(url){
+      case "/home_page":{ this.menu = "Consultório - Agenda"; sessionStorage.setItem("menu", this.menu); break; }
+      case "/paciente_list": { this.menu = "Pacientes"; sessionStorage.setItem("menu", this.menu); break; }
+      case "/paciente_cadastro": { this.menu = "Pacientes"; sessionStorage.setItem("menu", this.menu); break; }
+      case "/agendamento_cadastro": { this.menu = "Agendamentos"; sessionStorage.setItem("menu", this.menu); break; }
+      case "/agendamento_list": { this.menu = "Agendamentos"; sessionStorage.setItem("menu", this.menu); break; }
+      default: { this.menu = "Consultório - Agenda"; sessionStorage.setItem("menu", this.menu); break; }
+    }
+    
+    console.log(url);
+
   }
 
   sair(): void{

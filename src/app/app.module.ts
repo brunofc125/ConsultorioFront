@@ -9,7 +9,6 @@ import {
   MatTableModule,
   MatSelectModule,
   MatGridListModule,
-  MatProgressBarModule,
   MatExpansionModule,
   MatCheckboxModule
 } from '@angular/material';

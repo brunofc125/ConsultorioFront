@@ -31,26 +31,16 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
   }
 
-  validarSenhas(s1: string, s2: string): boolean{
-    if(s1 == s2){
-      if(s1.length >= 6)
-        return true;
-      else
-        alert("Senha menor que 6 caracteres");
-    } else
-      alert("As senhas não são iguais!");
-    return false;
-  }
-
   editarLogin(usuario){
-    var usuarioAlterado = new UsuarioCompleto(this.user.id, usuario.inputNome, usuario.inputLogin, this.user.senha);
-    if(!this.naoAlterarSenha && this.validarSenhas(this.senha1, this.senha2)){
+    var usuarioAlterado = new UsuarioCompleto(usuario.inputNome, usuario.inputLogin, this.user.senha, this.user.id);
+    if(!this.naoAlterarSenha && this.service.validarSenhas(this.senha1, this.senha2)){
       usuarioAlterado.senha = this.senha1;
       this.service.atualizarUsuario(usuarioAlterado).subscribe(
         success => { 
             if(success){
               alert("Atualização realizada!");
               this.senha1 = this.senha2 = "";
+              localStorage.setItem("UsuarioLogado", JSON.stringify(usuarioAlterado));
             } else{
               alert("Erro na atualização!");
             }
@@ -63,6 +53,7 @@ export class HomePageComponent implements OnInit {
             if(success){
               alert("Atualização realizada!");
               this.senha1 = this.senha2 = "";
+              localStorage.setItem("UsuarioLogado", JSON.stringify(usuarioAlterado));
             } else{
               alert("Erro na atualização!");
             }

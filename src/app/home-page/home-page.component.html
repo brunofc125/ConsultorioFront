@@ -1,23 +1,24 @@
 <div class="example-container">
 
-    <mat-toolbar>
-        <span>Bem-Vindo</span>
+    <mat-toolbar  style="background-color:rgba(255, 255, 255, 0.800)">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+              <td>
+                  <mat-icon style="color:#3273cd; float: left;">person</mat-icon>
+              </td>
+              <td style="color:#3273cd" width="100%">
+                  <p>Bem-Vindo {{user.nome}}</p>
+              </td>
+          </tr>
+      </table>
     </mat-toolbar>
+    <br>
 
-    <table class="example-full-width" cellspacing="0">
-        <tr>
-            <td width="10px">
-                <mat-icon>person</mat-icon>
-            </td>
-            <td width="100%">
-                <p>{{user.nome}}</p>
-            </td>
-        </tr>
-    </table>
+    
 
-    <form [formGroup]="form"  class = "example-form" (ngSubmit)="editarLogin(form.value)">
-    <mat-accordion>
-        <mat-expansion-panel>
+    <form [formGroup]="form"  class = "example-form" (ngSubmit)="editarLogin(form.value)" >
+    <mat-accordion >
+        <mat-expansion-panel >
           <mat-expansion-panel-header>
             <mat-panel-title>
               Perfil
@@ -62,11 +63,13 @@
       
 
       <div class = "button">
-        <button style="width:100px" type="submit" mat-raised-button color="primary"> Salvar </button>
+        <button style="background-color:rgba(255, 255, 255, 0.680);width:100px" type="submit" mat-raised-button> Salvar </button>
       </div>
 
       <div class = "checkbox" >
+        <mat-card style="padding: 6px 10px 6px 10px;background-color:rgba(255, 255, 255, 0.680)">
         <mat-checkbox (click)="checkedSenha()">Alterar Senha</mat-checkbox>
+        </mat-card>
       </div>
       
 

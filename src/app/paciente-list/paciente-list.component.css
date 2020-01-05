@@ -1,5 +1,6 @@
 table {
     width: 100%;
+    table-layout: fixed;
 }
     
 .example-form {
@@ -11,8 +12,10 @@ table {
 }
 
 div.button {
-    padding: 20px;
+    padding: 10px;
     float: right;
+    position: relative;
+    top: 2px;
 }
 
 div.text {
@@ -23,5 +26,10 @@ div.text {
 div.table {
     width: 98%;
     padding: 0px 10px;
+}
+
+.icon {
+    width: 100px;
+    text-align:center;
 }
 
