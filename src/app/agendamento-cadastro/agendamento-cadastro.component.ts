@@ -59,7 +59,6 @@ export class AgendamentoCadastroComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(customerData){
-    console.log(customerData);
     if(this.paciente!= null && this.usuario != null){
       if(this.isAgendamento){
         var a = new Agendamento(this.usuario.id, this.paciente.id, customerData.inputHorarioInicial, customerData.inputHorarioFinal, customerData.inputObservacao);

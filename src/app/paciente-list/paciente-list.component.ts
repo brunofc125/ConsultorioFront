@@ -18,7 +18,7 @@ export class PacienteListComponent implements OnInit {
 
   ngOnInit() {
     this.inputNome = "";
-    console.log(this.obterPacientes(this.inputNome));
+    this.obterPacientes(this.inputNome);
   }
 
   obterPacientes(nome: string): void {
@@ -26,7 +26,6 @@ export class PacienteListComponent implements OnInit {
       .getAll(nome)
       .subscribe(p => {
         this.dataSource = p;
-        console.log(p);
       });
   }
 

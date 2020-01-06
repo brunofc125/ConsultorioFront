@@ -21,9 +21,7 @@ export class BarraSuperiorComponent implements OnInit {
   constructor(
       private breakpointObserver: BreakpointObserver,
       private router: Router
-    ) {
-      console.log("cons: " + this.router.url)
-  }
+    ) { }
 
   ngOnInit() {
     var url = this.router.url;
@@ -35,9 +33,6 @@ export class BarraSuperiorComponent implements OnInit {
       case "/agendamento_list": { this.menu = "Agendamentos"; sessionStorage.setItem("menu", this.menu); break; }
       default: { this.menu = "Consultório - Agenda"; sessionStorage.setItem("menu", this.menu); break; }
     }
-    
-    console.log(url);
-
   }
 
   sair(): void{

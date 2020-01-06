@@ -20,17 +20,17 @@ export class LoginComponent implements OnInit {
     private service: LoginService,
     private router: Router
   ) {
+    this.login = true;
     this.formLogin = this.formBuilder.group({
       inputUsuario: '',
       inputSenha: ''
     });
     this.formCadastro = this.formBuilder.group({
-      inputLogin: '',
       inputNome: '',
+      inputLogin: '',
       inputSenha1: '',
       inputSenha2: ''
     });
-    this.login = true;
   }
 
   ngOnInit() {
@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
   fazerCadastro(customerData): void{
     if(this.service.validarSenhas(customerData.inputSenha1, customerData.inputSenha2)){
       var user = new UsuarioCompleto(customerData.inputNome, customerData.inputLogin, customerData.inputSenha1);
-      console.log(user);
       this.service.fazerCadastro(user).subscribe(
         success => { 
           if(success){

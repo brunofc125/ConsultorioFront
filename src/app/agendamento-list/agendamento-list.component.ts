@@ -20,7 +20,7 @@ export class AgendamentoListComponent implements OnInit {
 
   ngOnInit() {
     this.inputNome = "";
-    console.log(this.obterAgendamentosNome(this.inputNome));
+    this.obterAgendamentosNome(this.inputNome);
     this.buscarSelect = 'nome';
   }
 
@@ -37,22 +37,18 @@ export class AgendamentoListComponent implements OnInit {
       .getAllNome(nome)
       .subscribe(a => {
         this.dataSource = a;
-        console.log(a);
       });
   }
 
   obterAgendamentosData(data: Date): void{
-    console.log(data);
     this.service
     .getAllData(data)
     .subscribe(a => {
       this.dataSource = a;
-      console.log(a);
     });
   }
 
   deletar(i: number): void{
-    console.log(this.dataSource[i].id);
     this.service
       .deletar(this.dataSource[i].id)
       .subscribe(

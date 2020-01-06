@@ -25,10 +25,8 @@ export class LoginService {
   fazerLogin(user): void{
     this.usuarioLogado = null;   
     var u = new Usuario(user.inputUsuario, user.inputSenha);
-    console.log(u);
     this.getUsuario(u).subscribe(u =>  {
       this.usuarioLogado = u;
-      console.log(u);
       this.validar();
     });
   }
