@@ -16,7 +16,7 @@ Estas páginas são acessados através do menu a esquerda.
 
 Para sair, basta selecionar `Sair`, também no menu.
 
-Para vizualizar pacientes cadastrados, cadastrar 
+Para visualizar pacientes cadastrados, cadastrar 
 
 ## Development server
 
