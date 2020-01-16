@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 })
 
 export class LoginService {
-  private usuarioAutenticado: boolean = false;
+  private usuarioAutenticado = false;
   usuarioLogado: UsuarioCompleto;
 
   applicationUrl = environment.applicationUrl;
-  
+
   constructor(
     private router: Router,
     private httpClient: HttpClient
@@ -22,47 +22,50 @@ export class LoginService {
     this.usuarioLogado = null;
   }
 
-  fazerLogin(user): void{
-    this.usuarioLogado = null;   
-    var u = new Usuario(user.inputUsuario, user.inputSenha);
-    this.getUsuario(u).subscribe(u =>  {
-      this.usuarioLogado = u;
+  fazerLogin(user): void {
+    this.usuarioLogado = null;
+    const u = new Usuario(user.inputUsuario, user.inputSenha);
+    this.getUsuario(u).subscribe(a =>  {
+      this.usuarioLogado = a;
       this.validar();
     });
   }
 
   validar() {
-    if(this.usuarioLogado != null){
+    if (this.usuarioLogado != null) {
       this.usuarioAutenticado = true;
-      alert("Logado com sucesso!");
-      this.router.navigate(['/'])
-      localStorage.setItem("UsuarioLogado", JSON.stringify(this.usuarioLogado));
-    } else{
+      alert('Logado com sucesso!');
+      this.router.navigate(['/']);
+      localStorage.setItem('UsuarioLogado', JSON.stringify(this.usuarioLogado));
+    } else {
       this.usuarioAutenticado = false;
-      alert("Login ou senhas incorretos!");
+      alert('Login ou senhas incorretos!');
     }
   }
 
-  validarSenhas(s1: string, s2: string): boolean{
-    if(s1 == s2){
-      if(s1.length >= 6)
+  validarSenhas(s1: string, s2: string): boolean {
+    // tslint:disable-next-line: triple-equals
+    if (s1 == s2) {
+      if (s1.length >= 6) {
         return true;
-      else
-        alert("Senha menor que 6 caracteres");
-    } else
-      alert("As senhas não são iguais!");
+      } else {
+        alert('Senha menor que 6 caracteres');
+      }
+    } else {
+      alert('As senhas não são iguais!');
+    }
     return false;
   }
 
-  fazerCadastro(usuario: UsuarioCompleto) :  Observable<UsuarioCompleto>{
+  fazerCadastro(usuario: UsuarioCompleto): Observable<UsuarioCompleto> {
     return this.httpClient.post<UsuarioCompleto>(`${this.applicationUrl}/api/usuario`, usuario);
   }
 
-  getUsuario(usuario: Usuario) : Observable<UsuarioCompleto>{
+  getUsuario(usuario: Usuario): Observable<UsuarioCompleto> {
     return this.httpClient.get<UsuarioCompleto>(`${this.applicationUrl}/api/usuario/validar?login=${usuario.login}&senha=${usuario.senha}`);
   }
 
-  atualizarUsuario(usuario: UsuarioCompleto): Observable<UsuarioCompleto>{
+  atualizarUsuario(usuario: UsuarioCompleto): Observable<UsuarioCompleto> {
     return this.httpClient.put<UsuarioCompleto>(`${this.applicationUrl}/api/usuario`, usuario);
   }
 }
